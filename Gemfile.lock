@@ -91,10 +91,10 @@ PLATFORMS
 DEPENDENCIES
   irb
   morphix!
-  rake (~> 13.0)
-  rspec (~> 3.0)
-  rubocop (~> 1.21)
-  rubocop-rspec (~> 2.27)
+  rake
+  rspec
+  rubocop
+  rubocop-rspec
 
 BUNDLED WITH
    2.6.6
