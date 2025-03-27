@@ -71,9 +71,7 @@ module Morphix
           result.delete(key)
         when :reshape
           nested_transformer = args.first
-          if result.key?(key) && result[key].is_a?(Hash)
-            result[key] = nested_transformer.apply(result[key])
-          end
+          result[key] = nested_transformer.apply(result[key]) if result.key?(key) && result[key].is_a?(Hash)
         when :map_collection
           nested_transformer = args.first
           if result.key?(key) && result[key].is_a?(Array)
@@ -85,4 +83,4 @@ module Morphix
       result
     end
   end
-end 
+end

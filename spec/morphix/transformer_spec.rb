@@ -34,8 +34,8 @@ RSpec.describe Morphix::Transformer do
       result = transformer.apply(input)
 
       expect(result).to eq({
-        name: { first_name: "Dave", last_name: "Cooper" }
-      })
+                             name: { first_name: "Dave", last_name: "Cooper" }
+                           })
     end
 
     # Verifies that renaming doesn't affect other keys in the hash
@@ -124,12 +124,12 @@ RSpec.describe Morphix::Transformer do
       result = transformer.apply(input)
 
       expect(result).to eq({
-        address: {
-          street: "Main St",
-          postcode: "S2",
-          verified: true
-        }
-      })
+                             address: {
+                               street: "Main St",
+                               postcode: "S2",
+                               verified: true
+                             }
+                           })
     end
   end
 
@@ -155,11 +155,11 @@ RSpec.describe Morphix::Transformer do
       result = transformer.apply(input)
 
       expect(result).to eq({
-        users: [
-          { name: "Dave" },
-          { name: "Jason" }
-        ]
-      })
+                             users: [
+                               { name: "Dave" },
+                               { name: "Jason" }
+                             ]
+                           })
     end
   end
 
@@ -183,9 +183,9 @@ RSpec.describe Morphix::Transformer do
       result = transformer.apply(input)
 
       expect(result).to eq({
-        name: "Dave Cooper",
-        age: 40
-      })
+                             name: "Dave Cooper",
+                             age: 40
+                           })
     end
   end
 
@@ -249,21 +249,21 @@ RSpec.describe Morphix::Transformer do
       }
 
       expect(transformer.apply(input)).to eq({
-        user: {
-          info: {
-            name: "Dave Cooper",
-            contact: {
-              email: "dave@example.com",
-              phone: "123-456-7890"
-            }
-          },
-          address: {
-            street: "123 Main St",
-            postcode: "12345",
-            coordinates: { lat: 40.7128, lng: -74.0060 }
-          }
-        }
-      })
+                                               user: {
+                                                 info: {
+                                                   name: "Dave Cooper",
+                                                   contact: {
+                                                     email: "dave@example.com",
+                                                     phone: "123-456-7890"
+                                                   }
+                                                 },
+                                                 address: {
+                                                   street: "123 Main St",
+                                                   postcode: "12345",
+                                                   coordinates: { lat: 40.7128, lng: -74.0060 }
+                                                 }
+                                               }
+                                             })
     end
 
     # Tests transformation of arrays within nested structures
@@ -303,24 +303,24 @@ RSpec.describe Morphix::Transformer do
       }
 
       expect(transformer.apply(input)).to eq({
-        organization: {
-          departments: [
-            {
-              name: "Engineering",
-              employees: [
-                { name: "Dave Cooper", age: 35 },
-                { name: "Alice Smith", age: 28 }
-              ]
-            },
-            {
-              name: "Marketing",
-              employees: [
-                { name: "Bob Jones", age: 42 }
-              ]
-            }
-          ]
-        }
-      })
+                                               organization: {
+                                                 departments: [
+                                                   {
+                                                     name: "Engineering",
+                                                     employees: [
+                                                       { name: "Dave Cooper", age: 35 },
+                                                       { name: "Alice Smith", age: 28 }
+                                                     ]
+                                                   },
+                                                   {
+                                                     name: "Marketing",
+                                                     employees: [
+                                                       { name: "Bob Jones", age: 42 }
+                                                     ]
+                                                   }
+                                                 ]
+                                               }
+                                             })
     end
   end
 
@@ -464,35 +464,35 @@ RSpec.describe Morphix::Transformer do
       }
 
       expect(transformer.apply(input)).to eq({
-        meta: {
-          version: 2,
-          updated_at: "2024-03-27"
-        },
-        data: {
-          items: [
-            {
-              name: "Widget",
-              price: 19.99,
-              details: {
-                specifications: "High quality",
-                created_at: "2024-03-27 00:00:00 +0000"
-              }
-            },
-            {
-              name: "Gadget",
-              price: 29.99,
-              details: {
-                specifications: "Premium",
-                created_at: "2024-03-26 00:00:00 +0000"
-              }
-            }
-          ],
-          summary: {
-            total_items: 2,
-            total_price: 49.98
-          }
-        }
-      })
+                                               meta: {
+                                                 version: 2,
+                                                 updated_at: "2024-03-27"
+                                               },
+                                               data: {
+                                                 items: [
+                                                   {
+                                                     name: "Widget",
+                                                     price: 19.99,
+                                                     details: {
+                                                       specifications: "High quality",
+                                                       created_at: "2024-03-27 00:00:00 +0000"
+                                                     }
+                                                   },
+                                                   {
+                                                     name: "Gadget",
+                                                     price: 29.99,
+                                                     details: {
+                                                       specifications: "Premium",
+                                                       created_at: "2024-03-26 00:00:00 +0000"
+                                                     }
+                                                   }
+                                                 ],
+                                                 summary: {
+                                                   total_items: 2,
+                                                   total_price: 49.98
+                                                 }
+                                               }
+                                             })
     end
   end
 
@@ -508,7 +508,6 @@ RSpec.describe Morphix::Transformer do
           when "active" then 1
           when "pending" then 0
           when "deleted" then -1
-          else nil
           end
         end
       end
@@ -535,8 +534,8 @@ RSpec.describe Morphix::Transformer do
         ]
       }
       expect(transformer.apply(input)).to eq({
-        tags: { type: "user", role: "admin" }
-      })
+                                               tags: { type: "user", role: "admin" }
+                                             })
     end
 
     # Tests converting hash to array of key-value pairs
@@ -552,11 +551,11 @@ RSpec.describe Morphix::Transformer do
         metadata: { created_at: "2024-03-27", status: "active" }
       }
       expect(transformer.apply(input)).to eq({
-        metadata: [
-          { name: :created_at, value: "2024-03-27" },
-          { name: :status, value: "active" }
-        ]
-      })
+                                               metadata: [
+                                                 { name: :created_at, value: "2024-03-27" },
+                                                 { name: :status, value: "active" }
+                                               ]
+                                             })
     end
 
     # Tests complex data type conversions across multiple fields
@@ -674,19 +673,19 @@ RSpec.describe Morphix::Transformer do
       }
 
       expect(transformer.apply(input)).to eq({
-        node: {
-          name: "root",
-          value: 1,
-          left: {
-            name: "left",
-            value: 2
-          },
-          right: {
-            name: "right",
-            value: 3
-          }
-        }
-      })
+                                               node: {
+                                                 name: "root",
+                                                 value: 1,
+                                                 left: {
+                                                   name: "left",
+                                                   value: 2
+                                                 },
+                                                 right: {
+                                                   name: "right",
+                                                   value: 3
+                                                 }
+                                               }
+                                             })
     end
 
     # Tests transformation of deeply nested collections
@@ -733,27 +732,27 @@ RSpec.describe Morphix::Transformer do
       }
 
       expect(transformer.apply(input)).to eq({
-        categories: [
-          {
-            name: "Electronics",
-            subcategories: [
-              {
-                name: "Phones",
-                items: [
-                  {
-                    name: "iPhone",
-                    price: 999.99,
-                    variants: [
-                      { name: "Black", stock: 5 },
-                      { name: "White", stock: 3 }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      })
+                                               categories: [
+                                                 {
+                                                   name: "Electronics",
+                                                   subcategories: [
+                                                     {
+                                                       name: "Phones",
+                                                       items: [
+                                                         {
+                                                           name: "iPhone",
+                                                           price: 999.99,
+                                                           variants: [
+                                                             { name: "Black", stock: 5 },
+                                                             { name: "White", stock: 3 }
+                                                           ]
+                                                         }
+                                                       ]
+                                                     }
+                                                   ]
+                                                 }
+                                               ]
+                                             })
     end
   end
 
@@ -855,14 +854,14 @@ RSpec.describe Morphix::Transformer do
     # Tests combining multiple transformers into a single transformation
     # This is useful for building complex transformations from simpler components
     it "allows transformer composition" do
-      name_transformer = described_class.new do
+      described_class.new do
         rename :full_name, to: :name do |name|
           first, last = name.split
           { first: first, last: last }
         end
       end
 
-      address_transformer = described_class.new do
+      described_class.new do
         reshape :address do
           rename :postal_code, to: :postcode
           map :coordinates do |coords|
@@ -897,13 +896,13 @@ RSpec.describe Morphix::Transformer do
       }
 
       expect(combined_transformer.apply(input)).to eq({
-        name: { first: "Dave", last: "Cooper" },
-        address: {
-          street: "123 Main St",
-          postcode: "12345",
-          coordinates: { latitude: 40.7128, longitude: -74.0060 }
-        }
-      })
+                                                        name: { first: "Dave", last: "Cooper" },
+                                                        address: {
+                                                          street: "123 Main St",
+                                                          postcode: "12345",
+                                                          coordinates: { latitude: 40.7128, longitude: -74.0060 }
+                                                        }
+                                                      })
     end
   end
 
@@ -914,9 +913,7 @@ RSpec.describe Morphix::Transformer do
           rename :name, to: :org_name
           map_collection :employees do
             rename :name, to: :employee_name
-            map :manager_id do |id|
-              id.to_i
-            end
+            map :manager_id, &:to_i
           end
           map :relationships do |rels|
             # Convert manager-employee relationships to a graph structure
@@ -940,35 +937,36 @@ RSpec.describe Morphix::Transformer do
           ],
           relationships: {
             "0" => ["1"],
-            "1" => ["2", "3"]
+            "1" => %w[2 3]
           }
         }
       }
 
       expect(transformer.apply(input)).to eq({
-        organization: {
-          org_name: "Tech Corp",
-          employees: [
-            { employee_name: "Alice", id: "1", manager_id: 0 },
-            { employee_name: "Bob", id: "2", manager_id: 1 },
-            { employee_name: "Charlie", id: "3", manager_id: 1 }
-          ],
-          relationships: {
-            managers: { 0 => [1], 1 => [2, 3] },
-            employees: { 1 => 0, 2 => 1, 3 => 1 }
-          }
-        }
-      })
+                                               organization: {
+                                                 org_name: "Tech Corp",
+                                                 employees: [
+                                                   { employee_name: "Alice", id: "1", manager_id: 0 },
+                                                   { employee_name: "Bob", id: "2", manager_id: 1 },
+                                                   { employee_name: "Charlie", id: "3", manager_id: 1 }
+                                                 ],
+                                                 relationships: {
+                                                   managers: { 0 => [1], 1 => [2, 3] },
+                                                   employees: { 1 => 0, 2 => 1, 3 => 1 }
+                                                 }
+                                               }
+                                             })
     end
 
     it "handles complex data validation and transformation" do
       transformer = described_class.new do
         reshape :user do
           map :email do |email|
-            raise ArgumentError, "Invalid email" unless email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+            raise ArgumentError, "Invalid email" unless email =~ /\A[\w+\-.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+\z/i
+
             { address: email, domain: email.split("@").last }
           end
-          
+
           map :password do |pass|
             # Hash the password and store validation rules
             {
@@ -997,11 +995,11 @@ RSpec.describe Morphix::Transformer do
             # Handle base64 encoded image with metadata
             metadata, base64_data = image.split(",", 2)
             mime_type = metadata.match(/data:(.*);base64/)[1]
-            
+
             {
               mime_type: mime_type,
               size: Base64.decode64(base64_data).size,
-              data: base64_data.slice(0, 32) + "..." # Truncate for display
+              data: "#{base64_data.slice(0, 32)}..." # Truncate for display
             }
           end
         end
@@ -1019,21 +1017,21 @@ RSpec.describe Morphix::Transformer do
       result = transformer.apply(input)
       expect(result[:user][:email]).to eq({ address: "user@example.com", domain: "example.com" })
       expect(result[:user][:password][:validation]).to eq({
-        length: true,
-        uppercase: true,
-        lowercase: true,
-        number: true,
-        special: true
-      })
+                                                            length: true,
+                                                            uppercase: true,
+                                                            lowercase: true,
+                                                            number: true,
+                                                            special: true
+                                                          })
       expect(result[:user][:preferences]).to eq({
-        theme: "dark",
-        notifications: { email: "daily", sms: "never" },
-        data_sharing: { analytics: true, marketing: false }
-      })
+                                                  theme: "dark",
+                                                  notifications: { email: "daily", sms: "never" },
+                                                  data_sharing: { analytics: true, marketing: false }
+                                                })
       expect(result[:user][:profile_image][:mime_type]).to eq("image/jpeg")
     end
 
-     it "handles complex state machines and workflows" do
+    it "handles complex state machines and workflows" do
       transformer = described_class.new do
         reshape :workflow do
           map :states do |states|
@@ -1044,10 +1042,10 @@ RSpec.describe Morphix::Transformer do
                   { status: h["status"], timestamp: Time.strptime(h["timestamp"], "%Y-%m-%d %H:%M:%S") }
                 end,
                 metrics: {
-                  time_in_state: state["history"].each_cons(2).sum { |a, b|
-                    Time.strptime(b["timestamp"], "%Y-%m-%d %H:%M:%S") - 
-                    Time.strptime(a["timestamp"], "%Y-%m-%d %H:%M:%S")
-                  },
+                  time_in_state: state["history"].each_cons(2).sum do |a, b|
+                    Time.strptime(b["timestamp"], "%Y-%m-%d %H:%M:%S") -
+                      Time.strptime(a["timestamp"], "%Y-%m-%d %H:%M:%S")
+                  end,
                   transitions: state["history"].size - 1
                 },
                 allowed_transitions: state["transitions"].map(&:to_sym)
@@ -1084,12 +1082,12 @@ RSpec.describe Morphix::Transformer do
                 { "status" => "created", "timestamp" => "2024-03-27 09:00:00" },
                 { "status" => "draft", "timestamp" => "2024-03-27 09:15:00" }
               ],
-              "transitions" => ["review", "publish"]
+              "transitions" => %w[review publish]
             }
           },
           transitions: [
-            { "from" => "draft", "to" => "review", "conditions" => ["complete", "valid"] },
-            { "from" => "draft", "to" => "publish", "conditions" => ["complete", "valid", "approved"] }
+            { "from" => "draft", "to" => "review", "conditions" => %w[complete valid] },
+            { "from" => "draft", "to" => "publish", "conditions" => %w[complete valid approved] }
           ],
           validations: {
             "draft" => [
@@ -1103,20 +1101,23 @@ RSpec.describe Morphix::Transformer do
       result = transformer.apply(input)
       expect(result[:workflow][:states]["draft"]).to include(
         current: true,
-        allowed_transitions: [:review, :publish]
+        allowed_transitions: %i[review publish]
       )
       expect(result[:workflow][:states]["draft"][:metrics]).to include(
         time_in_state: 900, # 15 minutes in seconds
         transitions: 1
       )
       expect(result[:workflow][:transitions]["draft"]).to eq([
-        { to: "review", conditions: [:complete, :valid] },
-        { to: "publish", conditions: [:complete, :valid, :approved] }
-      ])
+                                                               { to: "review", conditions: %i[complete valid] },
+                                                               { to: "publish",
+                                                                 conditions: %i[complete valid approved] }
+                                                             ])
       expect(result[:workflow][:validations]["draft"]).to eq([
-        { check: :title_present, message: "Title is required", severity: :error },
-        { check: :content_length, message: "Content too short", severity: :warning }
-      ])
+                                                               { check: :title_present, message: "Title is required",
+                                                                 severity: :error },
+                                                               { check: :content_length, message: "Content too short",
+                                                                 severity: :warning }
+                                                             ])
     end
   end
-end 
+end
