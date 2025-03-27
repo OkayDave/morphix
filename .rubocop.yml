@@ -1,8 +1,63 @@
+require:
+  - rubocop-rspec
+
 AllCops:
+  NewCops: enable
   TargetRubyVersion: 3.1
+  Exclude:
+    - "spec/**/*"
+  SuggestExtensions: false
+
+Style/Documentation:
+  Enabled: true
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Layout/LineLength:
+  Max: 120
+
+Layout/LineEndStringConcatenationIndentation:
+  EnforcedStyle: aligned
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
-Style/StringLiteralsInInterpolation:
-  EnforcedStyle: double_quotes
+Style/SymbolArray:
+  EnforcedStyle: percent
+
+Style/WordArray:
+  EnforcedStyle: percent
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: nested
+
+Style/ArgumentsForwarding:
+  Enabled: true
+
+Naming/BlockForwarding:
+  Enabled: true
+
+Gemspec/RequireMFA:
+  Enabled: false
+
+Gemspec/DevelopmentDependencies:
+  Enabled: false
