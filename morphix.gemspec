@@ -8,8 +8,10 @@ Gem::Specification.new do |spec|
   spec.authors = ["Dave Russell"]
   spec.email = ["dave.kerr@gmail.com"]
 
-  spec.summary = "A concise, expressive DSL for elegantly reshaping and transforming Ruby hashes and JSON structures"
-  spec.description = "Morphix provides a clear, expressive DSL for transforming data structures in Ruby. Perfect for API response normalization, JSON reshaping, and ETL pipelines."
+  spec.summary = "A powerful DSL for transforming data structures like hashes and JSON. " \
+                 "Perfect for API response normalization, JSON reshaping, and ETL pipelines."
+  spec.description = "Morphix provides a clear, expressive DSL for transforming data structures in Ruby. " \
+                     "Perfect for API response normalization, JSON reshaping, and ETL pipelines."
   spec.homepage = "https://github.com/OkayDave/morphix"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.1.0"
@@ -31,16 +33,6 @@ Gem::Specification.new do |spec|
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-
-  spec.add_development_dependency "rspec", "~> 3.12"
-  spec.add_development_dependency "rubocop", "~> 1.57"
-  spec.add_development_dependency "rubocop-rspec", "~> 2.27"
-
-  # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "example-gem", "~> 1.0"
-
-  # For more information and examples about making a new gem, check out our
-  # guide at: https://bundler.io/guides/creating_gem.html
 
   spec.add_dependency "base64", "~> 0.2.0"
 end
