@@ -5,7 +5,14 @@ RSpec.describe Morphix do
     expect(Morphix::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "creates a transformer with the DSL" do
+    transformer = Morphix.define do
+      rename :old_name, to: :new_name
+    end
+
+    input = { old_name: "test" }
+    result = transformer.apply(input)
+
+    expect(result).to eq({ new_name: "test" })
   end
 end
